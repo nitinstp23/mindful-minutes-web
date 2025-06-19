@@ -6,6 +6,7 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -43,6 +44,7 @@ export default function RootLayout({
             </SignedIn>
           </header>
           {children}
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
