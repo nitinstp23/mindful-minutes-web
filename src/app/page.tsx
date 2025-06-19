@@ -1,6 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 const testimonials = [
   {
@@ -44,12 +51,25 @@ export default function Home() {
           Log your sessions, build consistency, and find your inner peace.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <button className="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-colors shadow-lg">
-            Create Account
-          </button>
-          <button className="border-2 border-emerald-600 text-emerald-600 px-8 py-3 rounded-full font-semibold hover:bg-emerald-600 hover:text-white transition-colors">
-            Login
-          </button>
+          <SignedOut>
+            <div className="flex gap-2">
+              <SignInButton mode="modal">
+                <button className="border-2 border-emerald-600 text-emerald-600 px-8 py-3 rounded-full font-semibold hover:bg-emerald-600 hover:text-white transition-colors uppercase">
+                  Login
+                </button>
+              </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-colors shadow-lg uppercase">
+                  Create Account
+                </button>
+              </SignUpButton>
+            </div>
+          </SignedOut>
+          <SignedIn>
+            <button className="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-colors shadow-lg uppercase">
+              Start Meditation
+            </button>
+          </SignedIn>
         </div>
       </header>
 
