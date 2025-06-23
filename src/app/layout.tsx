@@ -6,7 +6,8 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
+import Navigation from "./components/Navigation";
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -34,15 +35,7 @@ export default function RootLayout({
         <body
           className={`${montserrat.variable} ${geistMono.variable} antialiased`}
         >
-          <header className="fixed top-0 right-0 p-4 z-50">
-            <SignedIn>
-              <div className="flex items-center gap-4">
-                <div className="border-2 border-emerald-600 rounded-full bg-white flex items-center justify-center">
-                  <UserButton />
-                </div>
-              </div>
-            </SignedIn>
-          </header>
+          <Navigation />
           {children}
           <Analytics />
         </body>
