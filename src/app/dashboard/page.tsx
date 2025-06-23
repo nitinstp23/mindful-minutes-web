@@ -2,6 +2,7 @@ import { auth } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 import StreaksSection from './StreaksSection';
 import WeeklyProgressGraph from './WeeklyProgressGraph';
+import YearlyProgressGraph from './YearlyProgressGraph';
 
 export default async function Dashboard() {
   const { userId } = await auth();
@@ -30,6 +31,11 @@ export default async function Dashboard() {
           {/* Weekly Progress */}
           <section>
             <WeeklyProgressGraph />
+          </section>
+
+          {/* Yearly Progress */}
+          <section>
+            <YearlyProgressGraph />
           </section>
         </div>
       </div>
