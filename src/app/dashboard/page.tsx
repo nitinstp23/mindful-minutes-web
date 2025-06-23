@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import StreaksSection from './StreaksSection';
 import WeeklyProgressGraph from './WeeklyProgressGraph';
 import YearlyProgressGraph from './YearlyProgressGraph';
+import SessionsHistory from './SessionsHistory';
 
 export default async function Dashboard() {
   const { userId } = await auth();
@@ -36,6 +37,11 @@ export default async function Dashboard() {
           {/* Yearly Progress */}
           <section>
             <YearlyProgressGraph />
+          </section>
+
+          {/* Sessions History */}
+          <section>
+            <SessionsHistory />
           </section>
         </div>
       </div>
