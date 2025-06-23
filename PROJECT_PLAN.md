@@ -184,3 +184,51 @@ Successfully updated the application font from Geist Sans to Montserrat, which i
 - ✅ All existing styles maintained with new font family
 
 The font update is complete and the application now uses Montserrat as a high-quality alternative to Proxima Nova.
+
+---
+
+# PROJECT PLAN: Dashboard Implementation
+
+## Project Overview
+Create a comprehensive dashboard for logged-in users with meditation tracking features including streaks, progress graphs, and session history.
+
+## Requirements
+1. Dashboard accessible at `/dashboard` URL
+2. Redirect logged-in users from `/` to `/dashboard`
+3. Streaks section (current and longest streak)
+4. Weekly progress graph (minutes)
+5. Yearly progress graph (hours) with 5-year navigation
+6. Meditation sessions history with pagination
+
+## Implementation Plan
+
+### Phase 1: Core Dashboard Setup ⏳
+- [ ] Create `/dashboard` page route
+- [ ] Implement redirect logic for authenticated users
+- [ ] Set up basic dashboard layout
+
+### Phase 2: Streaks Feature
+- [ ] Design streaks section UI
+- [ ] Implement streak calculation logic
+- [ ] Add modern visualization for current/longest streaks
+
+### Phase 3: Weekly Progress Graph
+- [ ] Create weekly minutes graph component
+- [ ] Implement data visualization with modern design
+- [ ] Integrate with dashboard layout
+
+### Phase 4: Yearly Progress Graph
+- [ ] Create yearly hours graph component
+- [ ] Add navigation for previous 5 years
+- [ ] Implement month-by-month breakdown
+
+### Phase 5: Sessions History
+- [ ] Create sessions history table/list
+- [ ] Implement pagination (10, 20, 30 items per page)
+- [ ] Add navigation controls
+
+## Development Notes
+- Build iteratively - complete each feature before moving to next
+- Test after each feature completion
+- Maintain current design semantics (emerald/teal theme)
+- Use modern web visualization techniques

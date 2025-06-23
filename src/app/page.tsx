@@ -4,10 +4,17 @@ import {
   SignedIn,
   SignedOut,
 } from "@clerk/nextjs";
+import { auth } from '@clerk/nextjs/server';
+import { redirect } from 'next/navigation';
 import Footer from './Footer';
 import Testimonials from './Testimonials';
 
-export default function Home() {
+export default async function Home() {
+  const { userId } = await auth();
+  
+  if (userId) {
+    redirect('/dashboard');
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-teal-50">
