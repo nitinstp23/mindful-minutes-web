@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Montserrat, Geist_Mono } from "next/font/google";
 import {
   ClerkProvider,
-  SignedIn,
-  UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
