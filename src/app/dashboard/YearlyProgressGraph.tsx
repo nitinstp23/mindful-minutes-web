@@ -79,23 +79,23 @@ const mockYearlyData = {
 export default function YearlyProgressGraph() {
   const currentYear = new Date().getFullYear();
   const [selectedYear, setSelectedYear] = useState(currentYear);
-  
+
   const availableYears = Object.keys(mockYearlyData)
     .map(Number)
     .sort((a, b) => b - a);
 
   const yearData = mockYearlyData[selectedYear as keyof typeof mockYearlyData] || [];
-  
+
   const { totalHours, maxHours, averageHours, activeMonths } = useMemo(() => {
     const total = yearData.reduce((sum, month) => sum + month.hours, 0);
     const max = Math.max(...yearData.map(month => month.hours));
     const avg = total / 12;
     const active = yearData.filter(month => month.hours > 0).length;
-    return { 
-      totalHours: Math.round(total * 10) / 10, 
-      maxHours: Math.round(max * 10) / 10, 
-      averageHours: Math.round(avg * 10) / 10, 
-      activeMonths: active 
+    return {
+      totalHours: Math.round(total * 10) / 10,
+      maxHours: Math.round(max * 10) / 10,
+      averageHours: Math.round(avg * 10) / 10,
+      activeMonths: active
     };
   }, [yearData]);
 
@@ -108,7 +108,7 @@ export default function YearlyProgressGraph() {
         <h3 className="text-2xl font-bold text-slate-700">Yearly Progress</h3>
         <div className="flex items-center gap-4">
           <div className="text-right mr-4">
-            <p className="text-3xl font-bold text-emerald-600">{totalHours}h</p>
+            <p className="text-3xl font-bold text-emerald-600">{totalHours}</p>
             <p className="text-sm text-slate-600">total hours</p>
           </div>
           <div className="flex items-center gap-2">
@@ -146,7 +146,7 @@ export default function YearlyProgressGraph() {
             const heightPercentage = maxHours > 0 ? (month.hours / maxHours) * 100 : 0;
             const isCurrentMonth = selectedYear === currentYear && index === currentMonth;
             const isFutureMonth = selectedYear === currentYear && index > currentMonth;
-            
+
             return (
               <div key={index} className="flex-1 flex flex-col items-center">
                 <div className="w-full flex flex-col justify-end h-40 mb-2">
@@ -165,7 +165,7 @@ export default function YearlyProgressGraph() {
                 </div>
                 <div className="text-center">
                   <p className={`text-xs font-medium ${
-                    isCurrentMonth ? 'text-emerald-600' : 
+                    isCurrentMonth ? 'text-emerald-600' :
                     isFutureMonth ? 'text-gray-400' : 'text-slate-600'
                   }`}>
                     {month.month}
@@ -182,21 +182,21 @@ export default function YearlyProgressGraph() {
       <div className="grid grid-cols-4 gap-4 pt-6 border-t border-slate-100">
         <div className="text-center">
           <p className="text-xl font-bold text-emerald-600">{averageHours}h</p>
-          <p className="text-sm text-slate-600">avg/month</p>
+          <p className="text-sm text-slate-600">Avg per month</p>
         </div>
         <div className="text-center">
           <p className="text-xl font-bold text-amber-600">{maxHours}h</p>
-          <p className="text-sm text-slate-600">best month</p>
+          <p className="text-sm text-slate-600">Best month</p>
         </div>
         <div className="text-center">
           <p className="text-xl font-bold text-slate-600">{activeMonths}/12</p>
-          <p className="text-sm text-slate-600">months active</p>
+          <p className="text-sm text-slate-600">Months active</p>
         </div>
         <div className="text-center">
           <p className="text-xl font-bold text-indigo-600">
             {Math.round((totalHours / (selectedYear === currentYear ? (currentMonth + 1) : 12)) * 365 / 24)}
           </p>
-          <p className="text-sm text-slate-600">days/year pace</p>
+          <p className="text-sm text-slate-600">Days active</p>
         </div>
       </div>
     </div>

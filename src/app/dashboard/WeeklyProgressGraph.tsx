@@ -39,7 +39,7 @@ export default function WeeklyProgressGraph() {
           {mockWeeklyData.map((day, index) => {
             const heightPercentage = maxMinutes > 0 ? (day.minutes / maxMinutes) * 100 : 0;
             const isToday = day.date === today;
-            
+
             return (
               <div key={index} className="flex-1 flex flex-col items-center">
                 <div className="w-full flex flex-col justify-end h-40 mb-2">
@@ -69,18 +69,18 @@ export default function WeeklyProgressGraph() {
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4 pt-6 border-t border-slate-100">
         <div className="text-center">
-          <p className="text-2xl font-bold text-emerald-600">{averageMinutes}</p>
-          <p className="text-sm text-slate-600">avg/day</p>
+          <p className="text-2xl font-bold text-emerald-600">{averageMinutes}min</p>
+          <p className="text-sm text-slate-600">Avg per day</p>
         </div>
         <div className="text-center">
-          <p className="text-2xl font-bold text-amber-600">{maxMinutes}</p>
-          <p className="text-sm text-slate-600">best day</p>
+          <p className="text-2xl font-bold text-amber-600">{maxMinutes}min</p>
+          <p className="text-sm text-slate-600">Best day</p>
         </div>
         <div className="text-center">
           <p className="text-2xl font-bold text-slate-600">
             {mockWeeklyData.filter(day => day.minutes > 0).length}/7
           </p>
-          <p className="text-sm text-slate-600">days active</p>
+          <p className="text-sm text-slate-600">Days active</p>
         </div>
       </div>
     </div>
