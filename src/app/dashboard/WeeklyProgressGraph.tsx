@@ -23,6 +23,15 @@ export default function WeeklyProgressGraph() {
 
   const today = new Date().toISOString().split('T')[0];
 
+  const getBarClassName = (minutes: number, isToday: boolean) => {
+    if (minutes > 0) {
+      return isToday
+        ? 'bg-emerald-500 shadow-lg'
+        : 'bg-emerald-400 hover:bg-emerald-500';
+    }
+    return 'bg-gray-200';
+  };
+
   return (
     <div className="bg-white rounded-3xl p-8 shadow-sm border border-emerald-100">
       <div className="flex justify-between items-center mb-6">
@@ -44,13 +53,7 @@ export default function WeeklyProgressGraph() {
               <div key={index} className="flex-1 flex flex-col items-center">
                 <div className="w-full flex flex-col justify-end h-40 mb-2">
                   <div
-                    className={`w-full rounded-t-lg transition-all duration-300 ${
-                      day.minutes > 0
-                        ? isToday
-                          ? 'bg-emerald-500 shadow-lg'
-                          : 'bg-emerald-400 hover:bg-emerald-500'
-                        : 'bg-gray-200'
-                    }`}
+                    className={`w-full rounded-t-lg transition-all duration-300 ${getBarClassName(day.minutes, isToday)}`}
                     style={{ height: `${heightPercentage}%` }}
                   />
                 </div>

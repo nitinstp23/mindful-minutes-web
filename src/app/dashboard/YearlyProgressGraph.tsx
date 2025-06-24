@@ -101,6 +101,29 @@ export default function YearlyProgressGraph() {
 
   const currentMonth = new Date().getMonth();
 
+  const getMonthBarClassName = (hours: number, isCurrentMonth: boolean, isFutureMonth: boolean) => {
+    if (hours > 0) {
+      if (isCurrentMonth) {
+        return 'bg-emerald-500 shadow-lg';
+      }
+      if (isFutureMonth) {
+        return 'bg-gray-200';
+      }
+      return 'bg-emerald-400 hover:bg-emerald-500';
+    }
+    return 'bg-gray-200';
+  };
+
+  const getMonthTextClassName = (isCurrentMonth: boolean, isFutureMonth: boolean) => {
+    if (isCurrentMonth) {
+      return 'text-emerald-600';
+    }
+    if (isFutureMonth) {
+      return 'text-gray-400';
+    }
+    return 'text-slate-600';
+  };
+
   return (
     <div className="bg-white rounded-3xl p-8 shadow-sm border border-emerald-100">
       {/* Header with Year Navigation */}
@@ -148,26 +171,15 @@ export default function YearlyProgressGraph() {
             const isFutureMonth = selectedYear === currentYear && index > currentMonth;
 
             return (
-              <div key={index} className="flex-1 flex flex-col items-center">
+              <div key={month.month} className="flex-1 flex flex-col items-center">
                 <div className="w-full flex flex-col justify-end h-40 mb-2">
                   <div
-                    className={`w-full rounded-t-lg transition-all duration-300 ${
-                      month.hours > 0
-                        ? isCurrentMonth
-                          ? 'bg-emerald-500 shadow-lg'
-                          : isFutureMonth
-                          ? 'bg-gray-200'
-                          : 'bg-emerald-400 hover:bg-emerald-500'
-                        : 'bg-gray-200'
-                    }`}
+                    className={`w-full rounded-t-lg transition-all duration-300 ${getMonthBarClassName(month.hours, isCurrentMonth, isFutureMonth)}`}
                     style={{ height: `${heightPercentage}%` }}
                   />
                 </div>
                 <div className="text-center">
-                  <p className={`text-xs font-medium ${
-                    isCurrentMonth ? 'text-emerald-600' :
-                    isFutureMonth ? 'text-gray-400' : 'text-slate-600'
-                  }`}>
+                  <p className={`text-xs font-medium ${getMonthTextClassName(isCurrentMonth, isFutureMonth)}`}>
                     {month.month}
                   </p>
                   <p className="text-xs text-slate-500">{month.hours}h</p>

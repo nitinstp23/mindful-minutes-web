@@ -28,7 +28,6 @@ export default async function Dashboard() {
         <div className="grid gap-8">
           {/* Streaks Section */}
           <section>
-            <h2 className="text-2xl font-bold text-slate-700 mb-6">Your Streaks</h2>
             <StreaksSection />
           </section>
 
