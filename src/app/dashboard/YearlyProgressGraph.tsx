@@ -84,7 +84,9 @@ export default function YearlyProgressGraph() {
     .map(Number)
     .sort((a, b) => b - a);
 
-  const yearData = mockYearlyData[selectedYear as keyof typeof mockYearlyData] || [];
+  const yearData = useMemo(() => {
+    return mockYearlyData[selectedYear as keyof typeof mockYearlyData] || [];
+  }, [selectedYear]);
 
   const { totalHours, maxHours, averageHours, activeMonths } = useMemo(() => {
     const total = yearData.reduce((sum, month) => sum + month.hours, 0);

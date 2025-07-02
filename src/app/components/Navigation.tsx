@@ -85,11 +85,13 @@ export default function Navigation() {
                   className="flex items-center space-x-2 p-1 rounded-full hover:bg-gray-100 transition-colors"
                 >
                   {user?.imageUrl ? (
-                    <img
-                      src={user.imageUrl}
-                      alt="Profile"
-                      className="w-8 h-8 rounded-full object-cover border-2 border-emerald-600"
-                    />
+                    <picture>
+                      <img
+                        src={user.imageUrl}
+                        alt="Profile"
+                        className="w-8 h-8 rounded-full object-cover border-2 border-emerald-600"
+                      />
+                    </picture>
                   ) : (
                     <div className="w-8 h-8 bg-emerald-600 rounded-full flex items-center justify-center text-white font-semibold text-sm">
                       {user?.firstName?.charAt(0)?.toUpperCase() || 'U'}

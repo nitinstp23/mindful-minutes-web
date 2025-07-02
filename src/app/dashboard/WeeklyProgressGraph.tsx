@@ -35,7 +35,7 @@ export default function WeeklyProgressGraph() {
   return (
     <div className="bg-white rounded-3xl p-8 shadow-sm border border-emerald-100">
       <div className="flex justify-between items-center mb-6">
-        <h3 className="text-2xl font-bold text-slate-700">This Week's Progress</h3>
+        <h3 className="text-2xl font-bold text-slate-700">This Week&apos;s Progress</h3>
         <div className="text-right">
           <p className="text-3xl font-bold text-emerald-600">{totalMinutes}</p>
           <p className="text-sm text-slate-600">total minutes</p>
